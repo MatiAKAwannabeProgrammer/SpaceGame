@@ -1,0 +1,4 @@
+// Enemy bounds and collision with bullet.
+I had to add the initialization to enemyBounds in an active function, so i was updated.
+Otherwise the enemyBounds stayed in the same position in which the entity was spawned.
+
