@@ -8,6 +8,9 @@ Game::Game()
 {
     window.create(sf::VideoMode(800, 600), "The Game");
     isFired = false;
+    scoreInt = 0;
+    healthInt = 3;
+    enemySpawnTimer = 2.4f;
 }
 
 bool Game::running()
@@ -46,14 +49,17 @@ void Game::update()
     updateBullet();
 
     // Enemy function calls.
-    if (enemyTime.asSeconds() >= 2)
+    if (enemyTime.asSeconds() >= enemySpawnTimer)
     {
         enemyClock.restart();
         createEnemy();
     }
     updateEnemy();
 
-    enemy->collision(enemyVec, bulletVec);
+    enemy->collision(enemyVec, bulletVec, scoreInt);
+    // Level functions.
+    level();
+    increaseDifficulty();
 }
 
 void Game::render()
@@ -66,6 +72,8 @@ void Game::render()
     player.drawPlayer(window);
     drawBullet();
     drawEnemy();
+    score.drawScore(window, scoreInt);
+    health.drawHealth(window, healthInt);
 
     window.display();
 }
@@ -114,6 +122,7 @@ void Game::updateEnemy()
         {
             enemyVec.erase(enemyVec.begin() + i);
             enemyVec.shrink_to_fit();
+            healthInt--;
         }
     }
 }
@@ -122,4 +131,40 @@ void Game::drawEnemy()
 {
     for (unsigned int i = 0; i < enemyVec.size(); i++)
         enemyVec[i].drawEnemy(window);
+}
+
+void Game::level()
+{
+    if (scoreInt == 10)
+        levelInt = 2;
+    if (scoreInt == 20)
+        levelInt = 3;
+    if (scoreInt == 30)
+        levelInt = 4;
+    if (scoreInt == 40)
+        levelInt = 5;
+    if (scoreInt == 50)
+        levelInt = 6;
+    if (scoreInt == 60)
+        levelInt = 7;
+    if (scoreInt == 70)
+        levelInt = 8;
+}
+
+void Game::increaseDifficulty()
+{
+        if (levelInt == 2)
+            enemySpawnTimer = 2.2f;
+        if (levelInt == 3)
+            enemySpawnTimer = 2.0f;
+        if (levelInt == 4)
+            enemySpawnTimer = 1.8f;   
+        if (levelInt == 5)
+            enemySpawnTimer = 1.6f;
+        if (levelInt == 6)
+            enemySpawnTimer = 1.4f;
+        if (levelInt == 7)
+            enemySpawnTimer = 1.2f;
+        if (levelInt == 8)
+            enemySpawnTimer = 1.0f;
 }

@@ -1,0 +1,7 @@
+[x] Add an increasing difficulty by decreasing the enemy spawn timer.
+[ ] Add a start menu.
+[x] Add a health class.
+[ ] Creating an "end of game" screen once health drops to 0.
+[ ] Displaying the score at end of game screen.
+[ ] Score reset upon creating a new game.
+[ ] Increase the size of players and enemies.

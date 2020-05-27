@@ -24,7 +24,7 @@ public:
     void enemyMovement(float& deltaTime);
     void drawEnemy(sf::RenderWindow& window);
     void getEnemyPosition(); 
-    void collision(std::vector<Enemy>& enemyVec, std::vector<Bullet>& bulletVec);
+    void collision(std::vector<Enemy>& enemyVec, std::vector<Bullet>& bulletVec, int& score);
     sf::Vector2f enemyPosition;
     sf::FloatRect enemyBounds;
 };

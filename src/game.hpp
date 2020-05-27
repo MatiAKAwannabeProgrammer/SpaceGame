@@ -12,6 +12,8 @@
 #include "map.hpp"
 #include "bullet.hpp"
 #include "enemy.hpp"
+#include "textclass.hpp"
+#include "button.hpp"
 
 class Game
 {
@@ -27,8 +29,12 @@ private:
     sf::Clock enemyClock;
     sf::Time enemyTime;
     Map map;
-    Bullet * bullet;
-    Enemy * enemy;
+    Bullet* bullet;
+    Enemy* enemy;
+    TextClass score;
+    TextClass health;
+    Button* startButton;
+    Button* exitGame;
 
     // Variables.
     sf::Vector2f currentPlayerPos;
@@ -36,6 +42,10 @@ private:
     std::vector<Bullet> bulletVec;
     std::vector<Enemy> enemyVec;
     bool isFired;
+    float enemySpawnTimer;
+    int levelInt;
+    int scoreInt;
+    int healthInt;
 
 public:
     Game();
@@ -49,5 +59,7 @@ public:
     void createEnemy();
     void updateEnemy();
     void drawEnemy();
+    void level();
+    void increaseDifficulty();
 };
 #endif

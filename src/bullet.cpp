@@ -6,7 +6,7 @@ Bullet::Bullet(sf::Vector2f& playerPos)
     bulletModel.setPosition(playerPos.x +16, playerPos.y);
     bulletTexture.loadFromFile("./content/bullet.png");
     bulletModel.setTexture(bulletTexture);
-    speed = 400.f;
+    speed = 500.f;
 }
 
 void Bullet::updateBullet(float& deltaTime)

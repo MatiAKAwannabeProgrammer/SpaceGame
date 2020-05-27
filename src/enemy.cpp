@@ -31,7 +31,7 @@ void Enemy::getEnemyPosition()
     enemyPosition = enemyModel.getPosition();
 }
 
-void Enemy::collision(std::vector<Enemy>& enemyVec, std::vector<Bullet>& bulletVec)
+void Enemy::collision(std::vector<Enemy>& enemyVec, std::vector<Bullet>& bulletVec, int& score)
 {
     for (unsigned int i = 0; i < enemyVec.size(); i++) 
     {
@@ -41,6 +41,7 @@ void Enemy::collision(std::vector<Enemy>& enemyVec, std::vector<Bullet>& bulletV
             {
                 enemyVec.erase(enemyVec.begin() + i);
                 bulletVec.erase(bulletVec.begin() + j);
+                score++;
             }
         }
     }

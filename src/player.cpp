@@ -8,7 +8,7 @@ Player::Player()
     playerModel.setPosition(sf::Vector2f(400.f, 550.f));
     playerTexture.loadFromFile("./content/player.png");
     playerModel.setTexture(playerTexture);
-    speed = 300;
+    speed = 400;
     playerBounds = playerModel.getGlobalBounds();
 }
 
